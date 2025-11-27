@@ -3850,6 +3850,10 @@ textarea.form-control-lg {
   background-repeat: no-repeat;
   background-position: center;
   background-size: 100%;
+  filter: invert(100%) !important;
+}
+.navbar-toggler {
+    border-color: rgba(255, 255, 255, 0.5) !important; 
 }
 
 .navbar-nav-scroll {
@@ -6699,7 +6703,7 @@ textarea.form-control-lg {
   color: #5fbc6e !important;
 }
 .link-primary:hover, .link-primary:focus {
-  color: ##5fbc6e !important;
+  color: #5fbc6e !important;
 }
 
 .link-secondary {
@@ -10866,8 +10870,9 @@ hr.divider-light {
 
 #mainNav {
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
-  background-color: #fff;
+  background-color: transparent !important;
   transition: background-color 0.2s ease;
+  
 }
 #mainNav .navbar-brand {
   font-family: "Merriweather Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
@@ -10927,14 +10932,288 @@ hr.divider-light {
 }
 
 header.masthead {
+  position: relative;
   padding-top: 10rem;
   padding-bottom: calc(10rem - 4.5rem);
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.7) 100%), url("../assets/img/bg-masthead.jpg");
+  min-height: 100vh;
+
+  /* gambar hero */
+  background-image: url("../assets/img/bg-masthead.webp");
+  background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  background-attachment: scroll;
-  background-size: cover;
+  /* background-attachment: fixed; */ /* kalau masih terasa berat, boleh dihapus */
+  
 }
+body {
+    /* Langkah 1: Tambahkan lapisan gradien hitam (dark overlay) */
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                      url('../assets/img/bg-masthead2.webp'); /* GANTI DENGAN PATH GAMBAR ANDA */
+                      
+    background-color: #000000 !important; /* Fallback warna utama */
+    background-size: cover;
+    background-attachment: fixed; 
+    background-repeat: no-repeat;
+}
+
+#about {
+    /* MENGHAPUS SEMUA BACKGROUND AGAR BACKGROUND BODY (GAMBAR GELAP) TERLIHAT */
+    background: none !important; 
+    
+    /* Atur warna teks menjadi putih agar terbaca di atas gambar gelap */
+    color: #ffffff; 
+
+    /* Pastikan tidak ada margin atau padding yang menyebabkan celah */
+    padding-top: 5rem; /* Contoh padding, sesuaikan dengan kebutuhan Anda */
+    padding-bottom: 5rem;
+}
+
+/* Jika ada elemen di dalam #about (seperti judul, link, dll) yang tidak berwarna putih */
+#about h2, 
+#about h3, 
+#about a, 
+#about p {
+    color: #000000;
+}
+
+/* A. Section Utama (Wajib Transparan) */
+.page-section.bg-light {
+    background-color: transparent !important; 
+    background-image: none !important;
+}
+
+/* B. Wrapper Konten (Latar Belakang Semi-Transparan Hitam + Konten Putih) */
+.clients-content-wrapper {
+    /* Background semi-transparan hitam untuk kontras */
+    background-color: rgba(0, 0, 0, 0.85); 
+    
+    /* Padding dan radius */
+    padding: 3rem 1.5rem; 
+    border-radius: 0.5rem; 
+    
+    /* Warna teks default PUTIH */
+    color: #ffffff !important;
+}
+
+/* C. Memutihkan Logo */
+/* Menimpa styling inline yang membuat logo gelap */
+.clients-content-wrapper img.img-fluid {
+    filter: invert(100%) grayscale(100%) !important; /* Membuat logo berwarna putih */
+    opacity: 1 !important; /* Membuat logo terlihat penuh */
+}
+
+/* D. Memastikan Teks di dalam Wrapper Putih */
+.clients-content-wrapper h3,
+.clients-content-wrapper h4,
+.clients-content-wrapper p,
+.clients-content-wrapper a {
+    color: #ffffff !important;
+}
+
+/* Menargetkan ikon di dalam kontainer kolom layanan yang unik */
+#services .col-lg-3 .mb-2 i {
+    color: #ffffff !important; 
+}
+
+/* Memastikan tidak ada shadow atau efek gelap yang menutupi ikon */
+#services .col-lg-3 .mb-2 {
+    text-shadow: none !important;
+}
+
+/* Memastikan semua teks lain di dalam kotak layanan juga putih */
+#services h3,
+#services p {
+    color: #ffffff !important; 
+}
+#services p.text-muted {
+    color: #cccccc !important; 
+}
+
+
+
+#contact {
+    /* Menggunakan abu-abu gelap yang profesional */
+    background-color: #1a1a1a !important; 
+    
+    /* Memastikan tidak ada background-image yang menyebabkan flicker */
+    background-image: none !important;
+    
+    /* Mengatur semua teks di sini menjadi PUTIH untuk kontras maksimum */
+    color: #ffffff; 
+
+    /* Tambahkan padding agar konten tidak terlalu menempel */
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+}
+
+/* Pastikan semua elemen teks di dalamnya berwarna putih */
+#contact h2,
+#contact h3,
+#contact p,
+#contact a {
+    color: #ffffff;
+}
+
+/* KUNCI: Memperbaiki ikon dan teks di bagian bawah contact */
+/* Saat ini, ikon dan teks contact (WhatsApp, Telegram, dll) Anda berwarna hitam
+   (dilihat dari class text-dark pada HTML). Kita harus memutihkannya. */
+
+/* Targetkan semua link di dalam contact untuk diubah menjadi putih */
+#contact .d-block.text-decoration-none {
+    color: #ffffff !important; 
+}
+
+/* Pastikan teks kecil (small) di bawah ikon juga putih */
+#contact .d-block.text-decoration-none small.text-muted {
+    color: #cccccc !important; 
+}
+/* Pastikan warna teks diubah menjadi putih secara paksa */
+#contact h4.text-dark,
+#contact .d-block.text-decoration-none.text-dark {
+    color: #ffffff !important; 
+}
+
+/* Memutihkan teks kecil (small) yang menggunakan class text-muted */
+#contact small.text-muted {
+    color: #cccccc !important; /* Menggunakan abu-abu terang agar sedikit berbeda dari heading */
+}
+/* Menargetkan tombol ulasan di dalam section kontak */
+#contact a.btn {
+    /* Mengubah warna teks tombol menjadi hitam */
+    color: #000000 !important; 
+}
+
+/* Memutihkan ikon (i) yang ada di dalam link */
+#contact .d-block.text-decoration-none i {
+    color: #ffffff !important;
+}
+
+/* 1. Target Footer Utama (Mengganti bg-light menjadi abu-abu gelap) */
+footer.bg-light {
+    /* Warna abu-abu gelap yang sama dengan #contact */
+    background-color: #1a1a1a !important; 
+    
+    /* Memastikan tidak ada gambar latar belakang */
+    background-image: none !important;
+}
+
+/* 2. Target Teks Copyright (Mengganti text-muted menjadi putih) */
+footer.bg-light .text-muted {
+    /* Mengubah warna teks copyright menjadi putih */
+    color: #4CAF50 !important; 
+}
+
+/* Menargetkan ikon panah di dalam tombol scroll-to-top */
+#page-top i {
+    /* Mengubah warna panah (ikon) menjadi hitam */
+    color: #000000 !important; 
+}
+
+/* Jika tombol #page-top itu sendiri adalah ikon (misalnya, SVG atau karakter teks) */
+#page-top {
+    color: #000000 !important;
+}
+
+
+
+
+/* overlay hitam transparan */
+header.masthead::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55); /* atur gelap/terangnya di sini */
+  z-index: 0;
+}
+
+/* supaya teks di atas overlay */
+header.masthead .container {
+  position: relative;
+  z-index: 1;
+}
+
+
+
+
+
+/* Buat class baru untuk background gelap semi-transparan */
+.bg-trans-dark {
+    /* Hitam 95% opacity */
+    background-color: rgba(0, 0, 0, 0.95) !important; 
+    color: white; /* Pastikan teks di section ini berwarna putih */
+}
+/* Pastikan Navbar terlihat di atas semua elemen (Z-Index) */
+#mainNav {
+    /* Angka tinggi untuk memastikan navbar berada di atas overlay Hero Section */
+    z-index: 1050; 
+    
+    /* Beri warna latar belakang transparan yang terlihat di atas Hero Section */
+    background-color: rgba(0, 0, 0, 0.5) !important; 
+    
+    /* Kembalikan transisi (opsional, tapi bagus) */
+    transition: background-color 0.3s ease-in-out, padding 0.3s ease-in-out;
+}
+
+/* Pastikan logo dan teks navbar berwarna putih di Hero Section yang gelap */
+#mainNav .navbar-brand,
+#mainNav .nav-link {
+    color: white !important;
+}
+/* Class untuk Section yang memiliki konten teks penting (About, Services) */
+.bg-trans-dark {
+    /* Hitam 95% opacity */
+    background-color: rgba(0, 0, 0, 0.95) !important; 
+    color: white; 
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+}
+/* Class baru untuk menyembunyikan Navbar */
+.navbar-hide {
+    /* Mendorong navbar ke atas, di luar tampilan */
+    transform: translateY(-100%); 
+    /* Transisi harus tetap ada agar gerakan mulus */
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Pastikan #mainNav memiliki transisi untuk pergerakan */
+#mainNav {
+    /* Tambahkan transition untuk properti transform */
+    transition: background-color 0.3s ease-in-out, padding 0.3s ease-in-out, transform 0.3s ease-in-out; 
+}
+/* Pastikan ini adalah transisi yang paling lengkap dan menangani semua perubahan */
+#mainNav {
+    /* TRANSISI: Tambahkan semua properti yang bergerak */
+    transition: background-color 0.3s ease-in-out, padding 0.3s ease-in-out, transform 0.3s ease-in-out !important; 
+    z-index: 1050; 
+}
+
+/* Style saat navbar sedang terlihat/shrink (misalnya, setelah scroll sedikit) */
+.navbar-shrink {
+    /* Warna yang muncul saat scroll (Hitam Transparan) */
+    background-color: rgba(0, 0, 0, 0.9) !important;
+    
+    /* Ini penting: Hilangkan semua border atau bayangan yang mungkin abu-abu */
+    border-color: transparent !important;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+}
+
+/* Style saat navbar menghilang (hide) */
+.navbar-hide {
+    transform: translateY(-100%); 
+    /* Pastikan warna juga transparan agar tidak ada sisa abu-abu */
+    background-color: transparent !important; 
+    box-shadow: none !important;
+}
+
+
+
+
+
+
+
+
+
+
 header.masthead h1, header.masthead .h1 {
   font-size: 2.25rem;
 }
@@ -10957,6 +11236,55 @@ header.masthead h1, header.masthead .h1 {
     font-size: 3.5rem;
   }
 }
+
+
+/* Fade-in text di masthead */
+header.masthead h1,
+header.masthead p,
+header.masthead .mt-5 {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: mastheadFadeUp 0.9s ease-out forwards;
+}
+
+/* Stagger: urutannya beda-beda */
+header.masthead h1 {
+  animation-delay: 0.1s;
+}
+
+header.masthead p {
+  animation-delay: 0.3s;
+}
+
+header.masthead .mt-5 {
+  animation-delay: 0.5s;
+}
+
+/* Animasi naik + fade */
+@keyframes mastheadFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Kalau user aktifkan "reduce motion", matikan animasi */
+@media (prefers-reduced-motion: reduce) {
+  header.masthead h1,
+  header.masthead p,
+  header.masthead .mt-5 {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+
+
 
 #repair .container-fluid, #repair .container-sm, #repair .container-md, #repair .container-lg, #repair .container-xl, #repair .container-xxl {
   max-width: 1920px;
@@ -11016,4 +11344,82 @@ header.masthead h1, header.masthead .h1 {
     font-size: 1.25rem; 
     display: block;
     line-height: 50px; /* Pusatkan ikon */
+}
+
+/* Menargetkan garis pembagi di bagian "Our Partners and Clients" */
+.divider {
+    /* 1. Atur tinggi garis pembagi */
+    height: 0.25rem; /* Pastikan tingginya cukup, misalnya 4px */
+    
+    /* 2. Berikan warna latar belakang hijau (ganti dengan kode Hex hijau logo Anda) */
+    background-color: #4CAF50 !important; /* Contoh: Hijau cerah logo */
+    
+    /* 3. Pastikan border default yang mungkin putih dihilangkan */
+    border-color: transparent !important; 
+    border: none !important; /* Hapus semua border default */
+    
+    /* 4. Pastikan margin-bottom cukup besar agar tidak menempel */
+    margin-bottom: 2rem; /* Sesuaikan jarak yang Anda inginkan */
+}
+
+/* Menargetkan tombol scroll-to-top yang unik (ID safeBackToTop) */
+#safeBackToTop {
+    /* LATAR BELAKANG TOMBOL menjadi HIJAU LOGO */
+    background-color: #4CAF50 !important; 
+    
+    /* Mengatasi warna teks/ikon bawaan pada tombol itu sendiri */
+    color: transparent !important;
+}
+
+/* Menargetkan ikon panah di dalam tombol */
+#safeBackToTop i {
+    /* Ikon panah harus HITAM agar terlihat di latar belakang hijau */
+    color: #000000 !important; 
+    /* (Ikon Anda sudah memiliki inline style di HTML, tapi ini untuk berjaga-jaga) */
+}
+
+/* Pastikan body Anda kembali gelap setelah menghapus id="page-top" */
+#main-body {
+    background-color: #000000 !important; /* Atau warna gelap tema Anda */
+}
+
+/* Di styles.css, pastikan ini ada */
+#safeBackToTop {
+    /* Harus ada agar tombol tersembunyi saat di atas */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s ease-in-out, visibility 0.4s ease-in-out;
+    /* ... styling lainnya ... */
+}
+
+/* Dan ini untuk menampilkan */
+#safeBackToTop.show {
+    opacity: 1; 
+    visibility: visible; 
+}
+
+/* Menargetkan tombol dalam keadaan NORMAL (Default) */
+#safeBackToTop {
+    /* 1. LATAR BELAKANG NORMAL harus HIJAU */
+    background-color: #4CAF50 !important; 
+    
+    /* 2. BORDER NORMAL harus dihilangkan atau transparan */
+    border: none !important;
+    border-color: transparent !important;
+}
+
+/* Pastikan semua state yang lain juga diatur agar tidak kembali ke merah */
+#safeBackToTop:hover,
+#safeBackToTop:focus,
+#safeBackToTop:active,
+#safeBackToTop:focus-visible {
+    background-color: #4CAF50 !important; /* Tetap hijau saat disentuh */
+    box-shadow: none !important;
+    outline: none !important;
+    border: none !important;
+}
+
+/* Ikon tetap hitam */
+#safeBackToTop i {
+    color: #000000 !important; 
 }
