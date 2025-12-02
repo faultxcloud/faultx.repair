@@ -1,0 +1,705 @@
+/* Variabel Warna Tema FaultX - LIGHT MODE */
+:root {
+    --faultx-green: #4CAF50; 
+    --background-light: #ffffff; 
+    --content-bg-light: #f5f5f5; 
+    --text-dark: #222222; 
+    --text-muted-dark: #666666; 
+    --border-color: #dddddd; 
+    --shadow-subtle: rgba(0, 0, 0, 0.1); 
+    --button-hover-color: #45a049; 
+
+    --accent-color: var(--text-dark); 
+    --secondary-accent: var(--faultx-green); 
+}
+
+/* Base Styling */
+body {
+    font-family: 'Inter', sans-serif; /* Menggunakan font Inter */
+    background-color: var(--background-light); 
+    color: var(--text-dark); 
+    margin: 0;
+    padding: 0;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Hapus Overlay Gelap */
+body::before {
+    content: none; 
+}
+
+/* Header (Gaya Gelap, Logo Kiri - Menu Kanan) */
+.main-header {
+    background-color: #121212; 
+    padding: 15px 40px; /* Jarak agar tidak terlalu menempel ke tepi */
+    border-bottom: none; 
+    display: flex;
+    justify-content: space-between; /* LOGO KIRI, MENU KANAN */
+    align-items: center;
+    position: sticky; 
+    top: 0;
+    z-index: 1000;
+}
+
+.main-header .logo {
+    color: #e0e0e0; /* Teks logo putih */
+    font-size: 1.5em;
+    font-weight: 600;
+    display: flex; 
+    align-items: center;
+    text-decoration: none;
+}
+
+.main-header .logo-img {
+    height: 35px; 
+    margin-right: 10px;
+}
+
+/* Navigasi Menu (Tambahan untuk Home Page) */
+.main-nav {
+    display: flex;
+    align-items: center;
+    gap: 25px; 
+}
+
+.main-nav a {
+    color: #e0e0e0; /* Warna link putih */
+    text-decoration: none;
+    font-size: 1em;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.main-nav a:hover {
+    color: var(--faultx-green); 
+}
+
+/* Main Container */
+.container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+/* ================================================= */
+/* === STYLING UNTUK DETAIL PRODUK === */
+/* ================================================= */
+
+/* Product Grid (Detail Layout) */
+.product-grid {
+    display: flex;
+    gap: 40px;
+    background-color: var(--background-light); 
+    padding: 35px;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.05);
+    margin-bottom: 40px;
+    flex-wrap: wrap; 
+    border: 1px solid var(--border-color); 
+}
+
+/* (Potongan CSS Detail Produk: Media, Info, Specs, Buttons, dll. di sini) */
+
+/* Product Media */
+.product-media {
+    flex: 1 1 55%;
+    min-width: 300px; 
+}
+
+.main-image-wrapper {
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 15px;
+    background-color: var(--content-bg-light); 
+    padding: 20px; 
+}
+
+.main-product-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: contain; 
+    max-height: 400px; 
+    border-radius: 5px;
+}
+
+.zoom-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background-color: rgba(0, 0, 0, 0.6); 
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    font-size: 1.3em;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+.zoom-btn:hover {
+    background-color: var(--secondary-accent);
+    transform: scale(1.05);
+}
+
+.thumbnail-gallery {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    padding: 10px 0; 
+    justify-content: flex-start; 
+}
+
+.thumbnail-image {
+    width: 100px; 
+    height: 70px;
+    object-fit: cover;
+    border: 1px solid var(--border-color); 
+    border-radius: 5px;
+    cursor: pointer;
+    opacity: 0.9; 
+    transition: border-color 0.3s ease, opacity 0.3s ease;
+    background-color: var(--background-light);
+}
+
+.thumbnail-image:hover,
+.thumbnail-image.active {
+    border-color: var(--secondary-accent); 
+    opacity: 1;
+    box-shadow: 0 0 0 2px var(--secondary-accent); 
+}
+
+/* Product Info (Right Section) */
+.product-info {
+    flex: 1 1 40%;
+    display: flex;
+    flex-direction: column;
+}
+
+.product-title {
+    color: var(--text-dark); 
+    font-size: 2.6em;
+    font-weight: 700;
+    margin: 0 0 10px 0; 
+    letter-spacing: -0.5px;
+}
+
+.product-price {
+    font-size: 2.2em; 
+    font-weight: 700; 
+    color: var(--text-dark); 
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.shipping-info {
+    font-size: 0.7em; 
+    font-weight: 500;
+    color: var(--secondary-accent); 
+    margin-left: 10px;
+    vertical-align: middle;
+}
+
+.description-short {
+    color: var(--text-muted-dark); 
+    margin-bottom: 20px;
+    font-size: 1em; 
+    line-height: 1.7;
+}
+
+/* Product Specs - Gaya List Tipis */
+.product-specs {
+    background-color: transparent; 
+    padding: 0;
+    border: none;
+}
+
+.spec-item {
+    display: flex;
+    align-items: center;
+    padding: 5px 0; 
+    font-size: 0.95em; 
+    color: var(--text-dark); 
+    border-bottom: 1px dotted var(--border-color); 
+}
+.spec-item:last-child {
+    border-bottom: none;
+}
+
+/* ICON SPESIFIKASI */
+.spec-item i {
+    color: var(--secondary-accent); 
+    margin-right: 12px;
+    font-size: 1.1em;
+    width: 20px; 
+    text-align: center;
+}
+
+/* LABEL SPESIFIKASI */
+.spec-label {
+    font-weight: 500;
+    margin-right: 8px;
+    color: var(--text-dark); 
+    min-width: 80px; 
+}
+
+/* Action Buttons */
+.action-buttons {
+    margin-top: 30px; 
+    margin-bottom: 30px;
+}
+
+.buy-button {
+    width: 100%;
+    padding: 16px 25px; 
+    background-color: var(--faultx-green);
+    color: var(--background-light); 
+    border: none;
+    border-radius: 8px;
+    font-size: 1.2em; 
+    font-weight: 600; 
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    letter-spacing: 0.5px;
+}
+
+.buy-button:hover {
+    background-color: var(--button-hover-color);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.buy-button i {
+    font-size: 1.3em;
+}
+
+/* Meta Info */
+.meta-info {
+    border-top: 1px solid var(--border-color);
+    padding-top: 20px;
+    font-size: 0.85em; 
+    color: var(--text-muted-dark); 
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+/* Full Description (Gaya Kartu Modern) */
+.full-description {
+    background-color: var(--background-light); 
+    padding: 35px;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.05);
+    border: 1px solid var(--border-color); 
+}
+
+/* JUDUL DESKRIPSI LENGKAP */
+.full-description h2 {
+    color: var(--secondary-accent); 
+    font-size: 2em;
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 15px;
+    margin-bottom: 25px;
+    font-weight: 600;
+}
+
+.full-description p {
+    color: var(--text-dark); 
+    margin-bottom: 15px;
+    font-size: 1em;
+}
+
+.full-description h3 {
+    color: var(--text-dark); 
+    margin-top: 30px;
+    margin-bottom: 15px;
+    font-size: 1.2em;
+    font-weight: 600;
+}
+
+/* PERBAIKAN CHECKLIST ICON */
+.full-description ul {
+    list-style: none;
+    padding-left: 0;
+    margin-top: 0;
+}
+
+.full-description ul li {
+    color: var(--text-dark); 
+    position: relative;
+    padding-left: 25px; 
+    list-style: none; 
+    margin-bottom: 8px;
+}
+
+/* ICON CHECKMARK LIST - FIX ALIGNMENT */
+.full-description ul li::before {
+    content: "\f058"; 
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    color: var(--secondary-accent); 
+    position: absolute;
+    left: 0; 
+    top: 50%; /* FIX ALIGNMENT */
+    transform: translateY(-50%); /* FIX ALIGNMENT */
+    font-size: 1.1em;
+}
+
+/* ================================================= */
+/* === STYLING UNTUK HOME PAGE (PRODUCT GRID) === */
+/* ================================================= */
+
+/* Judul Halaman Home */
+.page-title-section {
+    text-align: center;
+    margin: 40px 0 50px 0;
+}
+.page-title-section h1 {
+    font-size: 2.5em;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: var(--text-dark);
+}
+.page-title-section p {
+    font-size: 1.1em;
+    color: var(--text-muted-dark);
+}
+
+/* Grid Layout (Tampilan 3 Kolom) */
+.product-list-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+    gap: 30px;
+    margin-bottom: 50px;
+}
+
+/* Kartu Produk */
+.product-card {
+    background-color: var(--background-light); 
+    border-radius: 12px;
+    box-shadow: 0 4px 15px var(--shadow-subtle); 
+    text-decoration: none;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden; 
+    border: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+}
+
+.product-card:hover {
+    transform: translateY(-5px); 
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15); 
+}
+
+/* Container Gambar */
+.product-image-container {
+    position: relative;
+    overflow: hidden;
+    padding: 15px; 
+    background-color: var(--content-bg-light); 
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.product-thumbnail {
+    width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    transition: transform 0.5s ease;
+}
+
+.product-card:hover .product-thumbnail {
+    transform: scale(1.05);
+}
+
+/* Status Produk (READY/TERJUAL) */
+.product-status {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.75em;
+    font-weight: 700;
+    color: white;
+    letter-spacing: 0.5px;
+}
+
+.product-status.available {
+    background-color: var(--faultx-green); 
+}
+
+.product-status.sold {
+    background-color: #e74c3c; 
+}
+
+/* Informasi Teks di Bawah Gambar */
+.product-card-info {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.product-card-title {
+    color: var(--text-dark);
+    font-size: 1.25em;
+    font-weight: 600;
+    margin: 0 0 5px 0;
+    line-height: 1.4;
+}
+
+.product-card-specs {
+    color: var(--text-muted-dark);
+    font-size: 0.9em;
+    margin: 0 0 15px 0;
+    flex-grow: 1;
+}
+
+.product-card-price {
+    color: var(--text-dark);
+    font-size: 1.4em;
+    font-weight: 700;
+    padding-top: 10px;
+    border-top: 1px dotted var(--border-color);
+}
+
+
+/* Responsive Adjustments (Gabungan Detail dan Home) */
+@media (max-width: 768px) {
+    .main-header {
+        padding: 15px 30px;
+    }
+    .main-nav {
+        gap: 15px;
+    }
+    .product-grid {
+        flex-direction: column;
+        gap: 30px;
+        padding: 25px;
+    }
+    .product-media, .product-info {
+        flex: none; 
+        width: 100%;
+        min-width: unset;
+    }
+    .product-title {
+        font-size: 2.2em;
+    }
+    .product-list-grid {
+        /* Mengubah menjadi 2 kolom untuk tablet */
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+        gap: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        margin: 20px auto;
+        padding: 0 10px;
+    }
+    .main-header {
+        
+        padding: 10px;
+    }
+    .main-header .logo {
+        margin-bottom: 10px;
+    }
+    .main-nav {
+        gap: 10px;
+        justify-content: center;
+    }
+    .main-nav a {
+        font-size: 0.9em;
+    }
+    .product-title {
+        font-size: 1.8em;
+    }
+    .product-list-grid {
+        /* Mengubah menjadi 1 kolom untuk ponsel */
+        grid-template-columns: 1fr; 
+        gap: 15px;
+    }
+    .page-title-section {
+        margin: 20px 0 30px 0;
+    }
+}
+
+/* ================================================= */
+/* === PENGGANTIAN UNTUK AUTO DARK MODE === */
+/* ================================================= */
+@media (prefers-color-scheme: dark) {
+    
+    /* 1. Definisi Variabel Warna untuk Dark Mode */
+    :root {
+        --background-light: #1a1a1a;        
+        --content-bg-light: #2c2c2c;        
+        --text-dark: #e0e0e0;               
+        --text-muted-dark: #a0a0a0;         
+        --border-color: #444444;            
+        --shadow-subtle: rgba(0, 0, 0, 0.5); 
+        
+        --accent-color: var(--text-dark);   
+        --secondary-accent: var(--faultx-green); 
+    }
+
+    /* 2. Penggantian Gaya Utama */
+    body {
+        background-color: var(--background-light);
+        color: var(--text-dark);
+    }
+
+    /* HEADER: Tetap Gelap (Konsisten dengan referensi) */
+    .main-header {
+        background-color: #121212;
+    }
+    .main-header .logo,
+    .main-nav a {
+        color: var(--text-dark);
+    }
+    
+    /* 3. Penggantian Gaya Kontainer/Kartu */
+    .product-grid,
+    .full-description,
+    .product-card { /* Tambahkan .product-card untuk Home Page */
+        background-color: var(--content-bg-light);
+        border: 1px solid var(--border-color);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4); 
+    }
+    
+    .product-card:hover {
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6); 
+    }
+
+    /* 4. Penggantian Detail Lain */
+    .main-image-wrapper,
+    .product-image-container {
+        background-color: #333333; /* Untuk gambar di detail dan home */
+    }
+
+    .product-specs {
+        background-color: transparent; 
+    }
+
+    /* Teks dan Judul */
+    .product-title, 
+    .product-price,
+    .full-description h2,
+    .spec-label,
+    .spec-item,
+    .full-description h3,
+    .full-description p,
+    .full-description ul li,
+    .product-card-title, /* Home Page */
+    .product-card-price { /* Home Page */
+        color: var(--text-dark);
+    }
+    
+    /* Garis, Teks Sekunder, dan Icon */
+    .spec-item {
+        border-bottom-color: var(--border-color);
+    }
+    .shipping-info,
+    .description-short,
+    .meta-info,
+    .product-card-specs { /* Home Page */
+        color: var(--text-muted-dark);
+    }
+    .meta-info {
+        border-top-color: var(--border-color);
+    }
+    .spec-item i,
+    .full-description ul li::before {
+        color: var(--secondary-accent); 
+    }
+}
+
+/* ================================================= */
+/* === RESPONSIVE NAVBAR: HAMBURGER MENU === */
+/* ================================================= */
+
+/* Sembunyikan Tombol Hamburger di Desktop */
+.menu-toggle {
+    display: none; 
+}
+
+/* Penyesuaian Navigasi untuk Tampilan Mobile (Max Width 768px) */
+@media (max-width: 768px) {
+    /* Atur Header di Mobile */
+    .main-header {
+        /* Kembalikan justify-content ke space-between untuk memisahkan logo & toggle */
+        justify-content: space-between; 
+        padding: 15px 20px; /* Atur padding di mobile */
+    }
+    
+    /* Tampilkan Tombol Hamburger */
+    .menu-toggle {
+        display: block; 
+        background: none;
+        border: none;
+        color: #e0e0e0; /* Warna teks biasa */
+        font-size: 1.5em;
+        cursor: pointer;
+        padding: 0;
+        z-index: 1001; 
+    }
+
+    /* Modifikasi Navigasi Utama */
+    .main-nav {
+        /* Default: Sembunyikan Menu */
+        position: absolute;
+        top: 100%; 
+        left: 0;
+        width: 100%;
+        background-color: var(--content-bg-light); /* Background menu saat terbuka */
+        flex-direction: column; 
+        height: 0; 
+        overflow: hidden; 
+        padding: 0;
+        transition: height 0.3s ease;
+    }
+
+    /* Tampilkan Menu saat Class 'active' Ditambahkan oleh JS */
+    .main-nav.active {
+        /* Ketinggian harus ditentukan agar transisi bekerja */
+        height: 50px; 
+        padding: 10px 0; 
+        border-top: 1px solid var(--border-color);
+    }
+
+    .main-nav a {
+        color: var(--text-dark);
+        padding: 10px 20px;
+        width: 100%;
+        text-align: center;
+        border-bottom: 1px solid var(--border-color);
+    }
+    .main-nav a:last-child {
+        border-bottom: none;
+    }
+}
+
+/* DARK MODE ADJUSTMENT untuk HAMBURGER */
+@media (prefers-color-scheme: dark) {
+    @media (max-width: 768px) {
+        .main-nav {
+            background-color: #1a1a1a; /* Pastikan background menu tetap gelap di Dark Mode */
+        }
+        .menu-toggle {
+            color: #e0e0e0;
+        }
+    }
+}

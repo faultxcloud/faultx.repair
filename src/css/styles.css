@@ -10948,7 +10948,7 @@ header.masthead {
 body {
     /* Langkah 1: Tambahkan lapisan gradien hitam (dark overlay) */
     background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
-                      url('../assets/img/bg-masthead2.webp'); /* GANTI DENGAN PATH GAMBAR ANDA */
+                      url('../assets/img/bg-masthead2.jpg'); /* GANTI DENGAN PATH GAMBAR ANDA */
                       
     background-color: #000000 !important; /* Fallback warna utama */
     background-size: cover;
@@ -11425,3 +11425,9 @@ header.masthead .mt-5 {
 }
 
 
+.nav-separator {
+    /* Menambahkan garis vertikal di sebelah kanan */
+    border-right: 1px solid #ccc; /* Misalnya warna abu-abu terang */
+    padding-right: 15px; /* Jarak antara teks dan garis */
+    margin-right: 15px; /* Jarak antara garis dan ikon */
+}
