@@ -59,9 +59,10 @@ body::before {
 
 /* Navigasi Menu (Tambahan untuk Home Page) */
 .main-nav {
-    display: flex;
+    display: flex; /* WAJIB: Atur Tampilan Horizontal di Desktop */
     align-items: center;
     gap: 25px; 
+    /* Hapus semua aturan mobile dari blok global ini */
 }
 
 .main-nav a {
@@ -70,6 +71,9 @@ body::before {
     font-size: 1em;
     font-weight: 500;
     transition: color 0.2s ease;
+    /* Reset style mobile */
+    padding: 0; 
+    border-bottom: none;
 }
 
 .main-nav a:hover {
@@ -182,6 +186,15 @@ body::before {
     flex-direction: column;
 }
 
+.product-brand {
+    color: var(--text-muted-dark); /* Warna abu-abu (lebih muted) */
+    font-size: 1em; /* Ukuran yang lebih kecil dari judul utama */
+    font-weight: 600;
+    text-transform: uppercase; /* Membuat huruf kapital semua */
+    margin: 0 0 5px 0; /* Memberi sedikit jarak di bawah */
+    letter-spacing: 1px;
+}
+
 .product-title {
     color: var(--text-dark); 
     font-size: 2.6em;
@@ -235,7 +248,7 @@ body::before {
 
 /* ICON SPESIFIKASI */
 .spec-item i {
-    color: var(--secondary-accent); 
+    color: var(--spec-icon-color) !important;
     margin-right: 12px;
     font-size: 1.1em;
     width: 20px; 
@@ -306,7 +319,7 @@ body::before {
 
 /* JUDUL DESKRIPSI LENGKAP */
 .full-description h2 {
-    color: var(--secondary-accent); 
+    color: var(--text-dark); 
     font-size: 2em;
     border-bottom: 2px solid var(--border-color);
     padding-bottom: 15px;
@@ -483,9 +496,6 @@ body::before {
     .main-header {
         padding: 15px 30px;
     }
-    .main-nav {
-        gap: 15px;
-    }
     .product-grid {
         flex-direction: column;
         gap: 30px;
@@ -512,18 +522,10 @@ body::before {
         padding: 0 10px;
     }
     .main-header {
-        
         padding: 10px;
     }
     .main-header .logo {
-        margin-bottom: 10px;
-    }
-    .main-nav {
-        gap: 10px;
-        justify-content: center;
-    }
-    .main-nav a {
-        font-size: 0.9em;
+        margin-bottom: 0; /* Pastikan logo tidak memiliki margin bawah di mobile */
     }
     .product-title {
         font-size: 1.8em;
@@ -628,7 +630,7 @@ body::before {
 }
 
 /* ================================================= */
-/* === RESPONSIVE NAVBAR: HAMBURGER MENU === */
+/* === RESPONSIVE NAVBAR: HAMBURGER MENU (MOBILE) === */
 /* ================================================= */
 
 /* Sembunyikan Tombol Hamburger di Desktop */
@@ -638,57 +640,63 @@ body::before {
 
 /* Penyesuaian Navigasi untuk Tampilan Mobile (Max Width 768px) */
 @media (max-width: 768px) {
-    /* Atur Header di Mobile */
-    .main-header {
-        /* Kembalikan justify-content ke space-between untuk memisahkan logo & toggle */
-        justify-content: space-between; 
-        padding: 15px 20px; /* Atur padding di mobile */
-    }
     
     /* Tampilkan Tombol Hamburger */
     .menu-toggle {
         display: block; 
         background: none;
         border: none;
-        color: #e0e0e0; /* Warna teks biasa */
+        color: #e0e0e0; 
         font-size: 1.5em;
         cursor: pointer;
         padding: 0;
         z-index: 1001; 
     }
 
-    /* Modifikasi Navigasi Utama */
+    /* Modifikasi Navigasi Utama di Mobile: Menyembunyikan dan Menurunkan */
     .main-nav {
-        /* Default: Sembunyikan Menu */
-        position: absolute;
+        /* Aturan Kunci: Menyembunyikan menu secara default di mobile */
+        position: absolute; 
         top: 100%; 
         left: 0;
         width: 100%;
-        background-color: var(--content-bg-light); /* Background menu saat terbuka */
+        
+        /* Tampilan Vertikal */
+        background-color: var(--content-bg-light); 
         flex-direction: column; 
+        align-items: flex-start; /* Rata kiri */
+        gap: 0; 
+        
+        /* Kontrol Tampilkan/Sembunyikan */
         height: 0; 
         overflow: hidden; 
-        padding: 0;
         transition: height 0.3s ease;
+        z-index: 999;
     }
 
     /* Tampilkan Menu saat Class 'active' Ditambahkan oleh JS */
     .main-nav.active {
-        /* Ketinggian harus ditentukan agar transisi bekerja */
-        height: 50px; 
-        padding: 10px 0; 
+        height: 100px; /* Tinggi yang cukup untuk 2-3 item menu */
+        padding: 0; 
         border-top: 1px solid var(--border-color);
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
     }
 
+    /* GAYA SETIAP ITEM MENU */
     .main-nav a {
         color: var(--text-dark);
-        padding: 10px 20px;
-        width: 100%;
-        text-align: center;
-        border-bottom: 1px solid var(--border-color);
+        padding: 10px 20px; 
+        width: 100%; 
+        text-align: left; 
+        border-bottom: 1px solid var(--border-color); 
     }
     .main-nav a:last-child {
         border-bottom: none;
+    }
+
+    /* Tambahan agar header tidak collapse di mobile */
+    .main-header {
+        justify-content: space-between;
     }
 }
 
@@ -696,10 +704,23 @@ body::before {
 @media (prefers-color-scheme: dark) {
     @media (max-width: 768px) {
         .main-nav {
-            background-color: #1a1a1a; /* Pastikan background menu tetap gelap di Dark Mode */
+            background-color: var(--background-light); 
         }
         .menu-toggle {
             color: #e0e0e0;
         }
     }
+}
+
+/* Gaya untuk Link di dalam Paragraf (Perbaikan Link Hijau) */
+p a {
+    color: var(--secondary-accent); 
+    text-decoration: none; 
+    font-weight: 600;
+    transition: color 0.2s ease;
+}
+
+p a:hover {
+    color: var(--button-hover-color); 
+    text-decoration: underline; 
 }

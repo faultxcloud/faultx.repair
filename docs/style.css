@@ -1,0 +1,124 @@
+/* ---------------------------------------------------- */
+/* 1. Definisi Variabel Warna untuk Tema */
+/* ---------------------------------------------------- */
+
+/* Default / Dark Theme (Aktif secara default atau saat theme-dark dipilih) */
+:root {
+    --bg-primary: #000000; /* Dark Black untuk body utama */
+    --bg-secondary: #1a1a1a; /* Warna sedikit lebih terang untuk sidebar/navbar */
+    --text-color: #f8f9fa; /* Teks Putih */
+    --text-secondary: #adb5bd; /* Teks Muted/Abu-abu */
+    --highlight-color: #3CB371; /* Hijau Emerald Soft */
+    --divider-color: #1a1a1a; /* Warna garis pemisah yang soft */
+}
+
+/* Light Theme Override (Aktif hanya jika body memiliki class 'theme-light') */
+.theme-light {
+    --bg-primary: #ffffff;
+    --bg-secondary: #f0f0f0;
+    --text-color: #212529; /* Teks Gelap */
+    --text-secondary: #6c757d;
+    --highlight-color: #3CB371; /* Highlight tetap sama */
+    --divider-color: #e9ecef;
+}
+
+/* ---------------------------------------------------- */
+/* 2. Styling Utama Dokumentasi Berbasis Variabel */
+/* ---------------------------------------------------- */
+
+/* Styling Utama Dokumentasi Berbasis Variabel */
+.doc-body {
+    /* Tambahkan !important */
+    background-color: var(--bg-primary) !important; 
+    color: var(--text-color) !important;
+    transition: background-color 0.3s, color 0.3s; 
+}
+
+/* Penyesuaian Navbar */
+.navbar.bg-dark {
+    /* Tambahkan !important */
+    background-color: var(--bg-secondary) !important;
+    border-bottom: 1px solid var(--divider-color);
+}
+
+/* Sidebar Style */
+.sidebar {
+    background-color: var(--bg-secondary);
+    padding: 20px;
+    height: 100vh;
+    position: sticky;
+    top: 0;
+    overflow-y: auto;
+}
+
+/* Sidebar Navigasi Link */
+.sidebar .nav-link {
+    color: var(--text-secondary);
+    padding: 8px 15px;
+    border-radius: 4px;
+}
+
+/* Sidebar Link Aktif/Hover (menggunakan --highlight-color) */
+.sidebar .nav-link:hover, .sidebar .nav-link.active {
+    color: #ffffff; /* Teks putih di atas highlight */
+    background-color: var(--highlight-color); 
+}
+
+/* Konten Dokumentasi */
+.doc-content {
+    padding: 40px;
+}
+
+/* Judul Utama (H2) pada Konten */
+.doc-content h2 {
+    color: var(--highlight-color);
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--divider-color);
+    margin-bottom: 25px;
+}
+
+/* Subjudul (H4) dan Elemen Teks Lainnya */
+.doc-content h4 {
+    color: var(--text-color);
+    margin-top: 20px;
+}
+
+/* Garis Pemisah (Horizontal Rule) */
+hr {
+    border-color: var(--divider-color) !important;
+}
+
+/* Navbar Penyesuaian (Jika menggunakan kelas Bootstrap 'bg-dark') */
+.navbar.bg-dark {
+    background-color: var(--bg-secondary) !important;
+    border-bottom: 1px solid var(--divider-color);
+}
+.navbar-dark .navbar-nav .nav-link {
+    color: var(--text-secondary);
+}
+.navbar-dark .navbar-nav .nav-link:hover {
+    color: var(--text-color);
+}
+
+
+/* Menyesuaikan Navbar di Light Mode */
+.theme-light .navbar.bg-dark {
+    /* Navbar background di Light Mode */
+    background-color: var(--bg-secondary) !important;
+}
+
+.theme-light .navbar-nav .nav-link,
+.theme-light .navbar-brand,
+.theme-light .navbar-toggler-icon {
+    /* Warna teks dan elemen navigasi di Light Mode */
+    color: var(--text-color) !important;
+    filter: invert(0) !important; /* Memastikan ikon tidak terbalik warnanya */
+}
+
+/* Mengubah tombol switcher di Light Mode menjadi outline gelap */
+.theme-light #themeDropdown {
+    color: var(--text-color) !important;
+    border-color: var(--text-color) !important;
+}
+
+
