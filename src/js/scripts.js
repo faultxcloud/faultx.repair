@@ -115,9 +115,30 @@ document.addEventListener('DOMContentLoaded', function() {
             });
             
             // Opsional: Untuk browser yang lebih lama (IE, dll.)
-            // document.body.scrollTop = 0; 
-            // document.documentElement.scrollTop = 0; 
+            document.body.scrollTop = 0; 
+            document.documentElement.scrollTop = 0; 
         });
     }
 });
 
+// Reveal on scroll (IntersectionObserver)
+(function() {
+  if (!('IntersectionObserver' in window)) return;
+
+  const revealElements = document.querySelectorAll('.reveal');
+
+  const revealIO = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        obs.unobserve(entry.target); // animate once
+      }
+    });
+  }, {
+    root: null,
+    rootMargin: '0px 0px -12% 0px',
+    threshold: 0
+  });
+
+  revealElements.forEach(el => revealIO.observe(el));
+})();

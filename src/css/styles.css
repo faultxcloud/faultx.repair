@@ -11431,3 +11431,18 @@ header.masthead .mt-5 {
     padding-right: 15px; /* Jarak antara teks dan garis */
     margin-right: 15px; /* Jarak antara garis dan ikon */
 }
+
+/* REVEAL ON SCROLL */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px) scale(0.995);
+  transition: opacity 600ms cubic-bezier(.22,.9,.37,1), transform 600ms cubic-bezier(.22,.9,.37,1);
+  will-change: opacity, transform;
+  visibility: hidden;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  visibility: visible;
+}
