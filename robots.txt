@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://faultxcloud.github.io/faultx.repair/sitemap.xml
